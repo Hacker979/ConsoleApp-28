@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp5
+namespace ConsoleApp28
 {
     class Program
     {
@@ -20,12 +20,14 @@ namespace ConsoleApp5
         }
         static void Mas()
         {
-            int[] mas = new int[14];
+            int[] mas = new int[9];
+            Random rand = new Random();
 
             for (int i = 0; i < mas.Length; i++)
             {
-                Console.Write($"mas[{i}] = ");
-                mas[i] = int.Parse(Console.ReadLine());
+                
+                mas[i] = rand.Next(1,20);
+                Console.Write($"mas[{i}] = {mas[i]}");
             }
             PrintMas(mas);
         }
