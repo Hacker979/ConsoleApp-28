@@ -8,25 +8,42 @@ namespace ConsoleApp5
 {
     class Program
     {
+        static void Sort(int[] mas)
+        {
+            int temp = 0;
+            int a = mas[0];
+            int max = 0;
+            for (int i = 1; i < mas.Length; i++)
+            {
+                if (a < mas[i])
+                {
+                    a = mas[i];
+                    max = i;
+                }
+            }
+
+            Console.WriteLine($"\nmax: mas[{max}] = {mas[max]}");
+
+            temp = mas[max];
+            mas[max] = mas[0];
+            mas[0] = temp;
+
+
+        }
         static void PrintMas(int[] mas)
         {
-            for (int i = 0; i < mas.Length; i++)
+            foreach (int i in mas)
             {
-                if (mas[i] % 2 == 0)
-                {
-                    Console.Write(mas[i] + " ");
-                }
+                Console.Write(i + " ");
             }
         }
         static void Mas()
         {
-            int[] mas = new int[14];
+            int[] mas = new int[8] {3,5,4,3,8,6,5,9 };
 
-            for (int i = 0; i < mas.Length; i++)
-            {
-                Console.Write($"mas[{i}] = ");
-                mas[i] = int.Parse(Console.ReadLine());
-            }
+            PrintMas(mas);
+            Sort(mas);
+            Console.Write("\nпоменять местами максимальный и первый элементы: ");
             PrintMas(mas);
         }
 
