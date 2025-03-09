@@ -10,13 +10,22 @@ namespace ConsoleApp28
     {
         static void PrintMas(int[] mas)
         {
+            int chet = 0;
+            int nechet = 0;
             for (int i = 0; i < mas.Length; i++)
             {
                 if (mas[i] % 2 == 0)
                 {
-                    Console.Write(mas[i] + " ");
+                    chet++;
+                }
+                else
+                {
+                    nechet++;
                 }
             }
+            Console.WriteLine($"четных = {chet}");
+            Console.WriteLine($"нечетных = {nechet}");
+            Console.WriteLine(chet > nechet ? "Четных больше" : chet < nechet ? "Нечетных больше" : "Четных и нечетных одинаково");
         }
         static void Mas()
         {
@@ -27,7 +36,7 @@ namespace ConsoleApp28
             {
                 
                 mas[i] = rand.Next(1,20);
-                Console.Write($"mas[{i}] = {mas[i]}");
+                Console.WriteLine($"mas[{i}] = {mas[i]}");
             }
             PrintMas(mas);
         }
