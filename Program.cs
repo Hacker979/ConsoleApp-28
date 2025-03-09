@@ -8,42 +8,78 @@ namespace ConsoleApp5
 {
     class Program
     {
-        static void Sort(int[] mas)
+        static double Avg(double[] mas)
         {
-            int temp = 0;
-            int a = mas[0];
-            int max = 0;
+            double sum = 0;
+            for (int i = 0; i < mas.Length; i++)
+            {
+                sum += mas[i];
+            }
+            return sum / mas.Length;
+        }
+        static double Max(double[] mas)
+        {
+            double max = mas[0];
             for (int i = 1; i < mas.Length; i++)
             {
-                if (a < mas[i])
+                if (mas[i] > max)
                 {
-                    a = mas[i];
-                    max = i;
+                    max = mas[i];
                 }
             }
-
-            Console.WriteLine($"\nmax: mas[{max}] = {mas[max]}");
-
-            temp = mas[max];
-            mas[max] = mas[0];
-            mas[0] = temp;
-
-
+            return max;
         }
-        static void PrintMas(int[] mas)
+        static double Min(double[] mas)
         {
-            foreach (int i in mas)
+            double min = mas[0];
+            for (int i = 1; i < mas.Length; i++)
+            {
+                if (mas[i] < min)
+                {
+                    min = mas[i];
+                }
+            }
+            return min;
+        }
+        static int MaxD(double[] mas, double max)
+        {
+            for (int i = 0; i < mas.Length; i++)
+            {
+                if (mas[i] == max)
+                {
+                    return i + 1;
+                }
+            }
+            return -1;
+        }
+
+        static int MinD(double[] mas, double min)
+        {
+            for (int i = 0; i < mas.Length; i++)
+            {
+                if (mas[i] == min)
+                {
+                    return i + 1;
+                }
+            }
+            return -1;
+        }
+
+        static void PrintMas(double[] mas)
+        {
+            foreach (double i in mas)
             {
                 Console.Write(i + " ");
             }
+            Console.WriteLine();
+            Console.WriteLine($"Среднее значение ЗП = {Avg(mas):F2}.");
+            Console.WriteLine($"Максимальная ЗП в {MaxD(mas, Max(mas))} день равна {Max(mas):F2}.");
+            Console.WriteLine($"Минимальная ЗП в {MinD(mas, Min(mas))} день равна {Min(mas):F2}.");
         }
         static void Mas()
         {
-            int[] mas = new int[8] {3,5,4,3,8,6,5,9 };
+            double[] mas = new double[12] { 63.50, 63.20, 63.57, 62.87, 64.31, 63.50, 63.24, 64.12, 62.59, 63.78, 63.42, 63.77 };
 
-            PrintMas(mas);
-            Sort(mas);
-            Console.Write("\nпоменять местами максимальный и первый элементы: ");
             PrintMas(mas);
         }
 
